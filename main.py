@@ -34,8 +34,9 @@ class CaptchaModel(BaseModel):
 
 @app.get("/", include_in_schema=False, response_class=HTMLResponse)
 def root():
-    content = 'Try using the API: https://captcha-gen.deta.dev/get-random-captcha\n\nAll API Links\nGet random captcha: https://captcha-gen.deta.dev/get-random-captcha \nCustom text captcha: https://captcha-gen.deta.dev/custom-captcha?custom_text=??? [Change "???" to the text you want] \nGet captcha: https://captcha-gen.deta.dev/get-captcha/ABC123 [Change "ABC123" to the captcha ID] \nGet captcha image: https://captcha-gen.deta.dev/get-captcha-image/ABC123.png [Change "ABC123" tp tje captcha ID] \nGet captcha audio: https://captcha-gen.deta.dev/get-captcha-audio/ABC123.wav [Change "ABC123" tp tje captcha ID] \nScripted by Sky..#7479'
-    return markdown2.markdown(content)
+     with open("README.md", "r", encoding="utf-8") as file:
+        readme_content = file.read()
+    return markdown2.markdown(readme_content)
 
 
 @app.get('/custom-captcha', response_model=CaptchaModel)
