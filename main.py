@@ -34,9 +34,8 @@ class CaptchaModel(BaseModel):
 
 @app.get("/", include_in_schema=False, response_class=HTMLResponse)
 def root():
-    with open("README.md", "r", encoding="utf-8") as file:
-        readme_content = file.read()
-    return markdown2.markdown(readme_content)
+    content = "Try using the API: https://textcaptcha-gen.deta.dev/create-random-captcha"
+    return markdown2.markdown(content)
 
 
 @app.get('/create-captcha-from-custom-text', response_model=CaptchaModel)
