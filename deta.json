@@ -1,5 +1,5 @@
 {
-    "name": "Private Simple Captcha Api",
+    "name": "Python Captcha Generator",
     "description": "Simple api for generating captcha image \uD83D\uDDBC️ and audio \uD83C\uDFB6",
     "runtime": "python3.9",
     "env": [
