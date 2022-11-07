@@ -16,9 +16,9 @@ import random
 import io, datetime
 
 deta = Deta()
-db = deta.Base('PrivateSimpleCaptchaApi')
+db = deta.Base('CaptchaAPI')
 app = FastAPI()
-API_KEY_FOUR_AUTH = getenv("API_KEY_FOUR_AUTH")
+API_KEY_FOUR_AUTH = "a4c50099-2857-4fd2-8643-5aaf967ec140"
 
 
 class CaptchaModel(BaseModel):
@@ -34,11 +34,11 @@ class CaptchaModel(BaseModel):
 
 @app.get("/", include_in_schema=False, response_class=HTMLResponse)
 def root():
-    content = "Try using the API: https://textcaptcha-gen.deta.dev/create-random-captcha"
+    content = "Try using the API: https://textcaptcha-gen.deta.dev/get-random-captcha"
     return markdown2.markdown(content)
 
 
-@app.get('/create-captcha-from-custom-text', response_model=CaptchaModel)
+@app.get('/custom-captcha', response_model=CaptchaModel)
 def create_captcha_from_custom_text(request: Request, custom_text: str):
     captcha_id = str(uuid4())
     audio_captcha_numbers = random.randint(1001, 9998)
@@ -56,7 +56,7 @@ def create_captcha_from_custom_text(request: Request, custom_text: str):
     return captcha
 
 
-@app.get('/create-random-captcha', response_model=CaptchaModel)
+@app.get('/get-random-captcha', response_model=CaptchaModel)
 def create_random_captcha(request: Request,
                           number_of_words: int = Query(default=1, ge=1, description="How may words should be used?")):
     captcha_id = str(uuid4())
@@ -82,8 +82,7 @@ def create_random_captcha(request: Request,
 
 
 @app.get('/get-captcha/{captcha_id}', response_model=CaptchaModel)
-def get_captcha(captcha_id: str, api_key_for_auth: str = Query(title="Api Key which was set at the deployment",
-                                                               example="7207a43b-2f02-4cf5-9338-70f6aa617260")):
+def get_captcha(captcha_id: str, api_key_for_auth: str = Query(title="Api Key which was set at the deployment",example="abcdefg-123456-abcdefg-123456-abcdefg")):
     if (api_key_for_auth != API_KEY_FOUR_AUTH):
         raise HTTPException(status_code=401, detail="Api Key is wrong")
     captcha = db.get(captcha_id)
