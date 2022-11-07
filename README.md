@@ -1,5 +1,5 @@
-# Private Simple Captcha Api
-Simple api for generating captcha image 🖼️ and audio 🎶 
+# Captcha Generator API
+API for generating captcha image 🖼️ and audio 🎶 
 Try using the API: https://captcha-gen.deta.dev/get-random-captcha
 
 # Usages
