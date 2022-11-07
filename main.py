@@ -34,9 +34,7 @@ class CaptchaModel(BaseModel):
 
 @app.get("/", include_in_schema=False, response_class=HTMLResponse)
 def root():
-     with open("README.md", "r", encoding="utf-8") as file:
-        readme_content = file.read()
-    return markdown2.markdown(readme_content)
+    return "https://github.com/SkyLi000/CaptchAPI/blob/main/README.md"
 
 
 @app.get('/custom-captcha', response_model=CaptchaModel)
