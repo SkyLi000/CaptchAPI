@@ -34,7 +34,7 @@ class CaptchaModel(BaseModel):
 
 @app.get("/", include_in_schema=False, response_class=HTMLResponse)
 def root():
-    content = "Try using the API: https://textcaptcha-gen.deta.dev/get-random-captcha"
+    content = "Try using the API: https://captcha-gen.deta.dev/get-random-captcha"
     return markdown2.markdown(content)
 
 
