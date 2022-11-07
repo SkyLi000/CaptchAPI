@@ -1,6 +1,6 @@
 # Captcha Generator API
-API for generating captcha image 🖼️ and audio 🎶 
-Try using the API: https://captcha-gen.deta.dev/get-random-captcha
+- API for generating captcha image 🖼️ and audio 🎶 
+- Try using the API: https://captcha-gen.deta.dev/get-random-captcha
 
 # Usages
 
